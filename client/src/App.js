@@ -4,9 +4,11 @@ import './App.css';
 
 function App() {
   // React.js Hook, replacement for constructor
+  // Initializes the default state
   const [apiResponse, setApiResponse] = React.useState("");
 
   // Function to be called
+  // Fetches the data form the PI and places the response in apiResponse
   const callAPI = () => {
     fetch("http://localhost:9000/testAPI")
         .then(res => res.text())
@@ -14,6 +16,7 @@ function App() {
   };
 
   // In place of ComponentDidMount
+  // Executes the callAPI() method after the component mounts
   useEffect(() => {
     callAPI();
   }, [])
