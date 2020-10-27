@@ -1,0 +1,14 @@
+# OSX
+.DS_STORE
+
+# VS Code
+.vscode
+
+# dotenv
+.env
+
+# MongoDB URI
+keys_dev.js
+
+# npm
+node_modules
