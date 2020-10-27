@@ -12,4 +12,4 @@ npm install\
 In api folder:\
   npm start\
 Open a second terminal, then in client folder:\
-  npm start\
+  npm start
