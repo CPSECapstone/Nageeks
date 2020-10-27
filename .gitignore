@@ -12,3 +12,6 @@ keys_dev.js
 
 # npm
 node_modules
+package-lock.json
+build
+npm-debug.log
