@@ -1,0 +1,2 @@
+NODE_ENV="development or production"
+MONGO_URI="mongo_uri_here"
