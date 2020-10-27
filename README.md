@@ -8,8 +8,9 @@ client is the React.js, being run on http://localhost:3000
 api is the Express.js, being run on http://localhost:3001
 
 # Quick Start. 
-npm install\
 In api folder:\
-  npm start\
+npm install\
+npm start\
 Open a second terminal, then in client folder:\
-  npm start
+npm install\
+npm start\
