@@ -8,13 +8,26 @@ client is the React.js, being run on http://localhost:3000
 api is the Express.js, being run on http://localhost:3001
 
 # Quick Start. 
-In client folder:\
-npm install\
-npm start\
-Open a second terminal, then in api folder:\
-npm install\
+## In client folder:
 
-## Create you .env\
-Edit .sample-env to contain your dev MongoDB URI
+npm install
 
-npm start\
+npm start
+
+## Open a second terminal, then in api folder:
+
+npm install
+
+## Create your keys_dev.js file
+
+example:
+
+module.exports = {
+
+    mongoURI: "mongoURI here",
+    
+    key: 'None'
+    
+}
+
+npm start
