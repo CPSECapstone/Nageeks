@@ -18,7 +18,7 @@ npm start
 
 npm install
 
-## Create your keys_dev.js file
+## Create your api/config/keys_dev.js file
 
 example:
 
