@@ -17,6 +17,3 @@ install:
   - npm install --prefix ./client/
 script:
   - npm start &
-  - sleep 10
-  - kill $!
-  - exit
