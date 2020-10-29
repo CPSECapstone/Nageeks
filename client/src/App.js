@@ -7,18 +7,24 @@ import Banner from './components/Banner';
 
 function App() {
   const [pageNum, setPageNum] = useState(0)
+  
+  function displayPage() {
+    let page;
+    if (pageNum ==0) {
+      page = <p>Welcome to Old Navy</p>
+    } else {
+      page = <Customers />
+    }
+    return page;
+  }
 
   return (
     <div className="App">
       <Banner/>
-      <p>{pageNum}</p>
-      <div className="home" selectedClass={pageNum}>
+      <div className="home" pageNum={pageNum}>
         <Sidebar cb={setPageNum}/>
         <header className="App-header">
-          <Customers />
-          <script>
-          console.log(pageNum);
-          </script>
+          {displayPage()}
         </header>
       </div>
     </div>
