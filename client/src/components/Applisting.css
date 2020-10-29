@@ -4,12 +4,23 @@
 }
 
 .applisting-box {
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
+  background-color: #323236;
   width: 220px;
   height: 220px;
   margin-left: 75px;
   margin-right: 75px;
-  border: 1px solid blue; 
+  border: 1px solid grey; 
+}
+
+.applisting-box:hover {
+  /* background-color: whitesmoke; */
+  background-color: grey;
+  width: 220px;
+  height: 220px;
+  margin-left: 75px;
+  margin-right: 75px;
+  border: 1px solid grey; 
 }
 
 .app-pic {

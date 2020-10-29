@@ -11,7 +11,7 @@ function App() {
   
   function displayPage() {
     let page;
-    if (pageNum ==0) {
+    if (pageNum == 0) {
       page = <Applistings/>
     } else {
       page = <Customers />
