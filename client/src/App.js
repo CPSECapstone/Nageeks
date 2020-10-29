@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Banner/>
-      {/* <p>{pageNum}</p> */}
+      <p>{pageNum}</p>
       <div className="home" selectedClass={pageNum}>
         <Sidebar cb={setPageNum}/>
         <header className="App-header">

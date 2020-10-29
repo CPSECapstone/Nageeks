@@ -10,7 +10,7 @@ export default function Sidebar (props) {
 
   return (
     <section className="side-bar">
-      <button className={props.className==0 ? "tablinks" : "tablinks.active" } onClick={(e) => openContent(e, 0)}>Apps</button>
+      <button onClick={(e) => openContent(e, 0)}>Apps</button>
       <button className="tablinks" onClick={(e) => openContent(e, 1)}>My Data</button>
       <button className="tablinks" onClick={(e) => openContent(e, 2)}>Calendar</button>
       <div className="sidebar-fill"></div>
