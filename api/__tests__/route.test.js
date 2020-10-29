@@ -1,5 +1,6 @@
 const request = require("supertest");
-const app = require("../api/app");
+const app = require("../app");
+const mongoose = require('mongoose');
 
 describe("GET / ", () => {
     test("Respond with an array of customers", async () => {
@@ -7,5 +8,10 @@ describe("GET / ", () => {
         const response = await request(app).get("/customers");
         expect(response.body).toEqual(expected);
         expect(response.statusCode).toBe(200);
+
+    });
+
+    afterAll(async () => {
+        await mongoose.connection.close();
     });
 });

@@ -17,3 +17,4 @@ install:
   - npm install --prefix ./client/
 script:
   - npm start &
+  - npm test --prefix ./api/
