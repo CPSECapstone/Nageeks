@@ -16,4 +16,5 @@ install:
   - mkdir -p ./client/node_modules/
   - npm install --prefix ./client/
 script:
+  - echo this is a demo
   - npm start &
