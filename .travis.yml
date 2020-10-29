@@ -16,4 +16,7 @@ install:
   - mkdir -p ./client/node_modules/
   - npm install --prefix ./client/
 script:
-  - npm start
+  - npm start &
+  - sleep 10
+  - kill $!
+  - exit
