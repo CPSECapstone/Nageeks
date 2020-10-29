@@ -1,5 +1,8 @@
 {
-"scripts": {
-    "start": "concurrently 'npm start --prefix ./api' 'npm start --prefix ./client'"
-  }
+    "scripts": {
+        "start": "concurrently 'npm start --prefix ./api' 'npm start --prefix ./client'"
+    },
+    "devDependencies": {
+        "concurrently": "^5.3.0"
+    }
 }
