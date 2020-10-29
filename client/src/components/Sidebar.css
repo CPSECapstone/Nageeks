@@ -11,7 +11,7 @@
 }
 
 /* Style the buttons that are used to open the side-bar content */
-.side-bar button {
+.side-bar-button {
   display: block;
   background-color: inherit;
   color: whitesmoke;
@@ -27,9 +27,8 @@
 
 .side-bar-active {
   display: block;
-  background-color: inherit;
-  /* color: whitesmoke; */
-  background-color: pink;
+  background-color: whitesmoke;
+  color: black;
   padding: 22px 16px;
   width: 100%;
   height: 5vh;
@@ -43,7 +42,7 @@
 
 /* Change background color of buttons on hover */
 .side-bar button:hover {
-    color: blue;
+    color: grey;
     background-color: whitesmoke;
 }
 
