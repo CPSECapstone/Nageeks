@@ -1,5 +1,6 @@
 import React, {useState, setState} from 'react';
 import './App.css';
+import Applistings from './components/Applisting';
 import Customers from './components/customers';
 import Sidebar from './components/Sidebar';
 import Banner from './components/Banner';
@@ -11,7 +12,7 @@ function App() {
   function displayPage() {
     let page;
     if (pageNum ==0) {
-      page = <p>Welcome to Old Navy</p>
+      page = <Applistings/>
     } else {
       page = <Customers />
     }
