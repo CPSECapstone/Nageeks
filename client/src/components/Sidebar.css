@@ -1,11 +1,7 @@
 * {box-sizing: border-box}
 
-.side-bar {
-  background-color: #2d3742;
-}
-
 /* Style the tab */
-.tab {
+.side-bar {
   float: left;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
@@ -14,8 +10,8 @@
   height: 100px;
 }
 
-/* Style the buttons that are used to open the tab content */
-.tab button {
+/* Style the buttons that are used to open the side-bar content */
+.side-bar button {
   display: block;
   background-color: inherit;
   color: black;
@@ -29,17 +25,17 @@
 }
 
 /* Change background color of buttons on hover */
-.tab button:hover {
+.side-bar button:hover {
   background-color: #ddd;
 }
 
-/* Create an active/current "tab button" class */
-.tab button.active {
+/* Create an active/current "side-bar button" class */
+.side-bar button.active {
   background-color: #ccc;
 }
 
-/* Style the tab content */
-.tabcontent {
+/* Style the side-bar content */
+.side-barcontent {
   float: left;
   padding: 0px 12px;
   border: 1px solid #ccc;
