@@ -3,8 +3,9 @@ import './Banner.css';
 
 function Banner () {
   return (
-    <div>
-    <p2>CloudHaven</p2>
+    <div className="banner">
+        <text className="banner-text">CloudHaven</text>
+        <text className="banner-account"> Welcome, Johnny</text>
     </div>
   );
 };
