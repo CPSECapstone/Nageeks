@@ -1,0 +1,21 @@
+sudo: false
+language: node_js
+node_js:
+  - node
+env:
+  global:
+    - NODE_ENV='production'
+    - secure: "CxRkMbNc81DggbUZsExmWFNZuDNoSmQgh0sMqsHwapQQjmKJ0epOZj82PMNNOQnM7TlbSGNaQQ84ApTHiU6ItlZNL+yVbfgzcBY8yY4EIZcSPhtZ5Tfjb4ST9H9RYht7b9rcvwMISRL00dzQOoGElyCCEthld9ZhI0YMvWSlBJhhsxthrVQwKnb8p+8NAeBC0G8YiTB6A205Q16uroi+zKp28wcJ0uH5NhoC065dpwmHzCjJWWeK9oWQYH7QVBx0RLeVLzHdO3XOccqGYxmzx3tCqegA0Yx82KTwE/FxUnoGQXKoQlM4/fDpbDiH2oYTzotmK9p7BbM1qZwsb2TSCG4kF2V4+2MOpfdwzceK8Zi1Ze3rkKsZASeLlSCe4W3hXS0y+Al19chfCsKYnj0JntQ3nWilzKCfjF4JYfbClMGbAjzZ4ieL7kAkbhdNkOdF7C7Os0gsOcfYK5bckFfDGpOBe6/Y7pYizCoZuZnwtiVuBSIdeKxkDiArwjFP8Gr/MujbiEglpa4WlUmB3nsj1g7PODOy8W/2pNzUnfSxyDrXodZAzqVqgYSwMtRDdwwFbCEHDnY6OsZIJI4/KlunFUGhWxiIh75dg3hKRq9Hkwc3mq9FjJnEwIQvCAs95imw5b5LPUS1BLbSXUcu+bkktbiS4XZN8zm1Fgy8I/RNg+M="
+cache:
+  - api/node_modules
+  - client/node_modules
+install:
+  - mkdir -p ./api/node_modules/
+  - npm install --prefix ./api/
+  - mkdir -p ./client/node_modules/
+  - npm install --prefix ./client/
+script:
+  - npm start --prefix ./api
+  - sleep 3
+  - npm start --prefix ./client
+  - sleep 3
