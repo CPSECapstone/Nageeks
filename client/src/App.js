@@ -9,24 +9,15 @@ import Banner from './components/Banner';
 function App() {
   const [pageNum, setPageNum] = useState(0)
 
-  // const incrementer = () => {
-  //   setPageNum(pageNum + 1);
-  // }
-  
-  function incrementer(i) {
-    setPageNum(i);
-  }
-
   return (
     <div className="App">
       <Banner/>
       <p>{pageNum}</p>
       <div className="home">
-        <Sidebar cb={incrementer}/>
+        <Sidebar cb={setPageNum}/>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
           </p>
           <a
             className="App-link"
