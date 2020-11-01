@@ -17,5 +17,5 @@ module.exports = {\
     key: 'None'\
 }
 
-npm install-dev
+npm install-dev\
 npm start
