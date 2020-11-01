@@ -13,7 +13,7 @@ example:
     }
 
 ## Install dependences and start (node_modules should be created in root, api, and config)
-npm install-dev\
+npm run install-dev\
 npm start
 
 client is the React.js, being run on http://localhost:3000
