@@ -9,6 +9,7 @@ mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 // check connection
 let db = mongoose.connection;
 db.once('open', () => console.log("connected to mongodb"));
+db.once('close', () => console.log("closing mongodb"));
 
 db.on('error', (err) => console.log(err));
 
