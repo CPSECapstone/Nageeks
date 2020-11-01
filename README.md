@@ -8,26 +8,14 @@ client is the React.js, being run on http://localhost:3000
 api is the Express.js, being run on http://localhost:3001
 
 # Quick Start. 
-## In client folder:
-
-npm install
-
-npm start
-
-## Open a second terminal, then in api folder:
-
-npm install
-
 ## Create your api/config/keys_dev.js file
 
 example:
 
-module.exports = {
-
-    mongoURI: "mongoURI here",
-    
-    key: 'None'
-    
+module.exports = {\
+    mongoURI: "mongoURI here",\
+    key: 'None'\
 }
 
+npm install-dev
 npm start
