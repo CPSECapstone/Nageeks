@@ -4,5 +4,5 @@ const customersSchema = new mongoose.Schema({
     _id: ObjectID,
     username: String 
   });
-const Customers = mongoose.model('Customers', customersSchema, 'Customers');
-module.exports = Customers;
+const customer = mongoose.model('customer', customersSchema, 'customers');
+module.exports = customer;

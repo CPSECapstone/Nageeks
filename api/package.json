@@ -20,6 +20,8 @@
     "pug": "^3.0.0"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "axios": "^0.21.0",
     "jest": "^26.6.1",
     "superagent": "^6.1.0",
     "supertest": "^6.0.0"
