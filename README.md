@@ -17,5 +17,6 @@ module.exports = {\
     key: 'None'\
 }
 
+## Install dependences and start (node_modules should be created in root, api, and config)
 npm install-dev\
 npm start
