@@ -10,10 +10,12 @@ cache:
   - api/node_modules
   - client/node_modules
 install:
-  - npm install
+  - npm --production=false install
   - mkdir -p ./api/node_modules/
-  - npm install --prefix ./api/
+  - npm --production=false install --prefix ./api/
   - mkdir -p ./client/node_modules/
-  - npm install --prefix ./client/
+  - npm --production=false install --prefix ./client/
 script:
   - npm start &
+  - sleep 5
+  - npm test --prefix ./api/
