@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Paper from '@material-ui/core/Paper';
+import './eventCalendar.css'
 import { 
   ViewState, 
   EditingState
@@ -26,10 +27,6 @@ const appointments = [
   { startDate: '2020-11-02T09:45', endDate: '2020-11-02T11:00', title: 'Meeting', id: 1},
   { startDate: '2020-11-02T12:00', endDate: '2020-11-02T13:30', title: 'Go to a gym', id: 2},
 ];
-
-const appointmentComponent = (props) => {
-  return <Appointments.Appointment {...props} />;
-};
 
 export default class Demo extends React.PureComponent {
   constructor(props) {
@@ -89,10 +86,9 @@ export default class Demo extends React.PureComponent {
     const { data, currentViewName, currentDate, addedAppointment, appointmentChanges, editingAppointment, } = this.state;
 
     return (
-      <Paper>
+      <Paper className="Scheduler">
         <Scheduler
           data={data}
-          height={660}
         >
           <ViewState
             defaultCurrentDate="2020-11-05"
