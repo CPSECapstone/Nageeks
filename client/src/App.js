@@ -2,6 +2,8 @@ import React, {useState, setState} from 'react';
 import './App.css';
 import Applistings from './components/Applisting';
 import Customers from './components/customers';
+import Calendar from './components/calendar';
+import EventCalendar from './components/eventCalendar';
 import Sidebar from './components/Sidebar';
 import Banner from './components/Banner';
 
@@ -11,10 +13,12 @@ function App() {
   
   function displayPage() {
     let page;
-    if (pageNum ==0) {
+    if (pageNum === 0) {
       page = <Applistings/>
-    } else {
+    } else if (pageNum === 1) {
       page = <Customers />
+    } else if (pageNum === 2) {
+      page = <EventCalendar />
     }
     return page;
   }
@@ -33,3 +37,4 @@ function App() {
 }
 
 export default App;
+
