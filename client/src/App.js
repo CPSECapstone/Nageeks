@@ -22,13 +22,22 @@ function App() {
 
   return (
     <div className="App">
-      <Banner/>
-      <div className="home" pageNum={pageNum}>
-        <Sidebar cb={setPageNum}/>
-        <header className="App-header">
-          {displayPage()}
-        </header>
-      </div>
+      <Grid 
+        container
+        direction="column"
+      >
+        <Grid item xs={12}>
+          <Banner/>
+        </Grid>
+        <Grid item xs={12}>
+          <div className="home" pageNum={pageNum}>
+            <Sidebar cb={setPageNum}/>
+            <header className="App-header">
+              {displayPage()}
+            </header>
+          </div>
+        </Grid>
+      </Grid>
     </div>
   );
 }
