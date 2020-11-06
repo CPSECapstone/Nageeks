@@ -12,12 +12,14 @@
     color: whitesmoke;
     font-size: 30px;
     margin-left: 40px;
+    text-decoration: none;
 }
 
 .banner-text:hover {
     color: grey;
     font-size: 30px;
     margin-left: 40px;
+    cursor: pointer;
 }
 
 .banner-account {
@@ -25,6 +27,7 @@
     color: whitesmoke;
     font-size: 17px;
     margin-right: 40px;
+    text-decoration: none;
 }
 
 .banner-account:hover {

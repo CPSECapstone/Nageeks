@@ -13,7 +13,6 @@
 
 /* Style the buttons that are used to open the side-bar content */
 .side-bar-button {
-  display: block;
   background-color: inherit;
   font-size: 20px;
   color: whitesmoke;
@@ -24,7 +23,6 @@
   text-align: right;
   cursor: pointer;
   transition: 0.3s;
-  padding-top: 15px;
 }
 
 .side-bar-active {
@@ -39,7 +37,6 @@
   text-align: right;
   cursor: pointer;
   transition: 0.3s;
-  padding-top: 15px;
 }
 
 
