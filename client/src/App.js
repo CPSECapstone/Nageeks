@@ -4,11 +4,23 @@ import Applistings from './components/Applisting';
 import Customers from './components/customers';
 import Sidebar from './components/Sidebar';
 import Banner from './components/Banner';
-import { Grid } from '@material-ui/core'
+import { Grid, Paper } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
+const useStyles = makeStyles({
+  sidebarStyle: {
+    backgroundColor: "#323236"
+  },
+  mainContentStyle: {
+    color: "whitesmoke",
+    backgroundColor: "#444449",
+    fontSize: "18px",
+  },
+})
 
 function App() {
   const [pageNum, setPageNum] = useState(0)
+  const classes = useStyles();
   
   function displayPage() {
     let page;
@@ -26,16 +38,35 @@ function App() {
         container
         direction="column"
       >
-        <Grid item xs={12}>
+        <Grid 
+          item 
+          xs={12}
+          style={{minHeight: '6vh', maxHeight: '6vh'}}
+        >
           <Banner/>
         </Grid>
         <Grid item xs={12}>
-          <div className="home" pageNum={pageNum}>
-            <Sidebar cb={setPageNum}/>
-            <header className="App-header">
-              {displayPage()}
-            </header>
-          </div>
+          <Grid 
+            container
+            direction="row"
+            style={{ minHeight: '94vh' }}
+          >
+            <Grid 
+              item xs={2}
+              className={classes.sidebarStyle}
+            >
+              <Sidebar cb={setPageNum}/>
+            </Grid>
+            <Grid 
+              item xs={10}
+              className={classes.mainContentStyle}
+            >
+              {/* <Paper
+              > */}
+                {displayPage()}
+              {/* </Paper> */}
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </div>
