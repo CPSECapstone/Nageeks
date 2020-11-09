@@ -26,6 +26,7 @@ export default function AppCard() {
   return (
     <Card
       className={classes.cardClass}
+      elevation={10}
     >
       <CardHeader
         action={
