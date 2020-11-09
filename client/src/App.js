@@ -1,5 +1,4 @@
 import React, {useState, setState} from 'react';
-import './App.css';
 import Applistings from './components/Applisting';
 import Customers from './components/customers';
 import Sidebar from './components/Sidebar';
@@ -33,43 +32,41 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <Grid 
+      container
+      direction="column"
+    >
       <Grid 
-        container
-        direction="column"
+        item 
+        xs={12}
+        style={{minHeight: '6vh', maxHeight: '6vh'}}
       >
+        <Banner/>
+      </Grid>
+      <Grid item xs={12}>
         <Grid 
-          item 
-          xs={12}
-          style={{minHeight: '6vh', maxHeight: '6vh'}}
+          container
+          direction="row"
+          style={{ minHeight: '94vh' }}
         >
-          <Banner/>
-        </Grid>
-        <Grid item xs={12}>
           <Grid 
-            container
-            direction="row"
-            style={{ minHeight: '94vh' }}
+            item xs={2}
+            className={classes.sidebarStyle}
           >
-            <Grid 
-              item xs={2}
-              className={classes.sidebarStyle}
-            >
-              <Sidebar cb={setPageNum}/>
-            </Grid>
-            <Grid 
-              item xs={10}
-              className={classes.mainContentStyle}
-            >
-              {/* <Paper
-              > */}
-                {displayPage()}
-              {/* </Paper> */}
-            </Grid>
+            <Sidebar cb={setPageNum}/>
+          </Grid>
+          <Grid 
+            item xs={10}
+            className={classes.mainContentStyle}
+          >
+            {/* <Paper
+            > */}
+              {displayPage()}
+            {/* </Paper> */}
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </Grid>
   );
 }
 
