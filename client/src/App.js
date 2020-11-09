@@ -14,6 +14,7 @@ const useStyles = makeStyles({
     color: "whitesmoke",
     backgroundColor: "#444449",
     fontSize: "18px",
+    justify: "center",
   },
 })
 
@@ -39,7 +40,7 @@ function App() {
       <Grid 
         item 
         xs={12}
-        style={{minHeight: '6vh', maxHeight: '6vh'}}
+        style={{minHeight: '50px', maxHeight: '6vh'}}
       >
         <Banner/>
       </Grid>
@@ -59,10 +60,7 @@ function App() {
             item xs={10}
             className={classes.mainContentStyle}
           >
-            {/* <Paper
-            > */}
-              {displayPage()}
-            {/* </Paper> */}
+            {displayPage()}
           </Grid>
         </Grid>
       </Grid>

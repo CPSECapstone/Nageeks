@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   cardClass: {
     backgroundColor: "#323236",
     color: "whitesmoke",
-    maxHeight: "320px"
+    // maxHeight: "320px"
   },
   media: {
     height: 0,
