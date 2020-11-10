@@ -5,15 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const dotenv = require('dotenv');
+dotenv.config({path: __dirname+'/config/.env'});
+
 const mongo = require('./mongo');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var customersRouter = require('./routes/customers');
 
-
-
-dotenv.config({path: './config/.env'});
 var app = express();
 
 // view engine setup
