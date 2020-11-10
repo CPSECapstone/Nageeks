@@ -9,8 +9,12 @@ example:
 
     module.exports = {
         mongoURI: "mongoURI here",
-        key: 'None'
+        key: "None"
     }
+
+## Create your api/config/.env file
+
+See api/config/.sample-env for setup of .env file
 
 ## Install dependences and start (node_modules should be created in root, api, and config)
 npm run install-dev\
