@@ -1,32 +1,34 @@
 const mongo = require('../mongo');
 const User = require('../models/user');
-const Address = require('../models/address');
 const { ObjectID } = require('mongodb');
 
 describe("CRUD testing DB models", () => {
     const uid = ObjectID();
     const addressId = ObjectID();
 
-    test("Add a user to mdb", async () => {
-        const expected = new User({
+    test("Add a user to mdb and read that user", async () => {
+        const user = new User({
             _id: uid,
             schemaVersion: 1.0,
             firstName: "Deku",
             lastName: "Harms",
             dob: new Date('1990-08-15T06:15:30.000+00:00'),
-            addressId: addressId,
+            address: {
+                country: "United States", 
+                firstLine: "400 Pacheco Way",
+                secondLine: "",
+                city: "San Luis Obispo",
+                state: "CA",
+                zipCode: "93410",
+            },
             phoneNumber: "530-391-9054"
         });
         // save on a model inserts a new document
         // save on a document updates the document
-        actual = await expected.save();
-        expect(actual).toEqual(expected);
-    });
+        await user.save();
 
-    test("Read existing user in mdb", async () => {
-        const expected = "Deku Harms";
-        const doc = await User.findById(uid);
-        const actual = doc.getName();
+        const actual = await User.findById(uid);
+        console.log(actual);
         expect(actual).toEqual(expected);
     });
 
