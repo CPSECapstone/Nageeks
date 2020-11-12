@@ -18,5 +18,5 @@ install:
 script:
   - npm start &
   - sleep 5
-  - npm test --prefix ./api/
+  - cd api && npm test
   - cd client && npm test a
