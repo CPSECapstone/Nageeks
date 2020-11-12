@@ -4,7 +4,7 @@ import Applistings from './components/Applisting';
 import Customers from './components/customers';
 import Sidebar from './components/Sidebar';
 import Banner from './components/Banner';
-
+import UserForm from './components/UserForm';
 
 function App() {
   const [pageNum, setPageNum] = useState(0)
@@ -13,8 +13,12 @@ function App() {
     let page;
     if (pageNum ==0) {
       page = <Applistings/>
-    } else {
-      page = <Customers />
+    } else if (pageNum ==1) {
+      page = <Applistings/>
+    } else if (pageNum ==2) {
+      page = <Applistings/>
+    } else if (pageNum ==3) {
+      page = <UserForm/>
     }
     return page;
   }

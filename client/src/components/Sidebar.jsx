@@ -31,6 +31,12 @@ export default function Sidebar (props) {
       >
         Calendar
       </button>
+      <button 
+        className= {sidebarNum === 3 ? "side-bar-active" : "side-bar-button"}
+        onClick={(e) => openContent(e, 3)}
+      >
+        Forms
+      </button>
       <div className="sidebar-fill"></div>
     </div>
   );
