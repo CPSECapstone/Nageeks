@@ -3,8 +3,8 @@ const chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
 const assert = chai.assert;
 
-const mongo = require('../mongo');
-const User = require('../models/user');
+const mongo = require('../../mongo');
+const User = require('../../models/user');
 const { ObjectID } = require('mongodb');
 
 async function addUser(){
@@ -54,19 +54,36 @@ describe("CRUD testing user model", function() {
         }
     });
 
-    it("Successfuly add user to db", async function (){
-        // save on a model inserts a new document
-        // save on a document updates the document
-        console.log(user._id);
-        assert.isFalse(user.isNew, "Check that the user saved correctly");
+    it("Successfuly add user", async function (){
+        /* 
+            save on a model inserts a new document
+            save on a document updates the document
+            since isNew is a property of the user model,
+            save tries to call an update and cant find user since it was dropped
+        */
+        assert.isFalse(user.isNew, "Instance of user model is not new after saving");
     });
 
     it("Find user by id", async function(){
-        // since isNew is a property of the user model,
-        // save is trying to call an update and cant find user since it was dropped
-        console.log(user._id);
         const actual = await User.findById(user._id);
-        assert.equal(actual._id.toString(), user._id.toString(), "The found document should be the one we just saved");
+        assert.equal(actual._id.toString(), user._id.toString(), "");
+    });
+
+    it("Update user first name", async function(){
+        const expected = "Kyle";
+
+        const doc = await User.findById(user._id);
+        doc.firstName = expected;
+        await doc.save();
+
+        const actual = await User.findById(user._id);
+        assert.equal(actual.firstName, expected, "The found document should be the one we just saved");
+    });
+
+    it("Successfuly delete user", async function(){
+        // finds doc by id, removes it, passes found doc (if any) to callback
+        const actual = await User.findByIdAndDelete(user._id);
+        assert.equal(actual._id.toString(), user._id.toString(), "Id of deleted user should match desired user id");
     });
 
 });
