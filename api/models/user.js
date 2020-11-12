@@ -25,9 +25,28 @@ const userSchema = new Schema({
     },
     // mongoose casts value given to Date to native js date
     dob: Date, 
-    addressId: {
-        type: ObjectID, 
-        required: [true, "Address required"],
+    address: {
+        country: {
+            type: String, // Country, Region
+            required: [true, "Country address field required"]
+        },
+        firstLine:{
+            type: String, // Street address, P.O. box, company name, c/o
+            required: [true, "First line address field required"]
+        },
+        secondLine: String, // Apartment, suite, unit, building, floor, etc.
+        city: {
+            type: String,
+            required: [true, "City address field required"]
+        },
+        state: {
+            type: String, // State, Province, Region
+            required: [true, "State address field required"]
+        },
+        zipCode: {
+            type: String, // Zip Code
+            required: [true, "Zip Code address field required"]
+        }
     },
     phoneNumber: {
         type: String,
@@ -38,7 +57,7 @@ const userSchema = new Schema({
             },
             message: props => `${props.value} is not a valid phone number.`
           },
-    }
+    },
 });
 
 userSchema.methods.getName = function(){
