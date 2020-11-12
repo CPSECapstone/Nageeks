@@ -3,11 +3,11 @@ const chaiAsPromised = require("chai-as-promised");
 chai.use(chaiAsPromised);
 const assert = chai.assert;
 
-const mongo = require('../../mongo');
+const mongoose = require('../../mongoose_connection');
 const User = require('../../models/user');
 const { ObjectID } = require('mongodb');
 
-async function addUser(){
+async function createUser(){
     const user = new User({
         _id: ObjectID(),
         schemaVersion: 1.0,
@@ -31,13 +31,13 @@ async function addUser(){
 describe("CRUD testing user model", function() {
     let user = null;
     before(async function(){
-        user = await addUser();
+        user = await createUser();
     });
 
     beforeEach(async function() {
         try{
-            await mongo.dropCollection('users');
-            user = await addUser();
+            await mongoose.dropCollection('users');
+            user = await createUser();
         }
         catch(err){
             console.log(err.message);
@@ -46,8 +46,7 @@ describe("CRUD testing user model", function() {
 
     after(async function() {
         try{
-            await mongo.dropCollection('users');
-            await mongo.close();
+            await mongoose.dropCollection('users');
         }
         catch(err){
             console.log(err.message);
