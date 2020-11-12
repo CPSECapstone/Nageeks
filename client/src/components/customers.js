@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Axios from "axios";
 
 class Customers extends Component{
     constructor(){
@@ -9,11 +10,15 @@ class Customers extends Component{
     }
 
     componentDidMount(){
-        // figure out how to use axios instead of fetch
-        fetch('/customers')
-        .then(res => res.json())
-        .then(customers => this.setState({customers}, () => console.log('Customers fetched..',
-        customers)));
+        // Axios Method
+        Axios({
+            method: 'GET',
+            url: '/customers',
+        }).then(res => 
+            res.data,
+        ).then(customers => 
+            this.setState({customers}, () => console.log("Customers fetched with axios...", customers))
+        )
     }
 
     render() {
