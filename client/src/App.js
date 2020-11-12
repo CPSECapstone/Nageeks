@@ -2,7 +2,6 @@ import React, {useState, setState} from 'react';
 import './App.css';
 import Applistings from './components/Applisting';
 import Customers from './components/customers';
-import Calendar from './components/calendar';
 import EventCalendar from './components/eventCalendar';
 import Sidebar from './components/Sidebar';
 import Banner from './components/Banner';
