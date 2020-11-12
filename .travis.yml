@@ -19,3 +19,4 @@ script:
   - npm start &
   - sleep 5
   - npm test --prefix ./api/
+  - cd client && npm test a
