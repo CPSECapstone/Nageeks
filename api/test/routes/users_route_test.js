@@ -46,6 +46,8 @@ async function createUsers(){
 }
 
 describe("Testing /users route", function() {
+    let users = null;
+
     before(async function(){
         users = await createUsers();
         console.log(JSON.stringify(users));
@@ -70,7 +72,12 @@ describe("Testing /users route", function() {
         }
     })
 
-    it("Get all users", function(){
-        assert.isTrue(true);
+    it("Find all users", async function(){
+        const expected = users.map((user) => user._id);
+        const doc = await User.find();
+        //const res = await request(app).get('/users');
+        const actual = doc.map((user) => user._id);
+
+        assert.deepStrictEqual(expected, actual);
     });
 });
