@@ -50,7 +50,6 @@ describe("Testing /users route", function() {
 
     before(async function(){
         users = await createUsers();
-        console.log(JSON.stringify(users));
     });
 
     beforeEach(async function() {
@@ -73,11 +72,23 @@ describe("Testing /users route", function() {
     })
 
     it("Find all users", async function(){
-        const expected = users.map((user) => user._id);
-        const doc = await User.find();
-        //const res = await request(app).get('/users');
-        const actual = doc.map((user) => user._id);
+        const expected = users.map((user) => user._id.toString());
+        const res = await request(app).get('/users');
+        const actual = res.body.map((user) => user._id);
+        console.log(res.body);
+        // console.log(typeof expected[0]); bson object because user model uses bson
+        // console.log(typeof actual[0]); string because of res.json
+        assert.deepEqual(expected, actual);
+    });
 
-        assert.deepStrictEqual(expected, actual);
+    it("Find user by uid", async function(){
+        const expected = users[0]._id.toString();
+        const res = await request(app).get(`/users/${users[0]._id.toString()}`);
+        const actual = res.body._id;
+        //console.log(res.body);
+        // console.log(typeof expected[0]); bson object because user model uses bson
+        // console.log(typeof actual[0]); string because of res.json
+        console.log(res.body)
+        assert.deepEqual(expected, actual);
     });
 });
