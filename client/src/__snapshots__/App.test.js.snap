@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`First snapshot test 1`] = `
+<div
+  className="App"
+>
+  <div
+    className="banner"
+  >
+    <text
+      className="banner-text"
+    >
+      CloudHaven
+    </text>
+    <text
+      className="banner-account"
+    >
+       Welcome, Johnny
+    </text>
+  </div>
+  <div
+    className="home"
+    pageNum={0}
+  >
+    <div
+      className="side-bar"
+    >
+      <button
+        className="side-bar-active"
+        onClick={[Function]}
+      >
+        Apps
+      </button>
+      <button
+        className="side-bar-button"
+        onClick={[Function]}
+      >
+        My Data
+      </button>
+      <button
+        className="side-bar-button"
+        onClick={[Function]}
+      >
+        Calendar
+      </button>
+      <div
+        className="sidebar-fill"
+      />
+    </div>
+    <header
+      className="App-header"
+    >
+      <div
+        className="applist"
+      >
+        <div
+          className="applisting-box"
+        >
+          <img
+            alt="UC Davis Medical"
+            className="app-pic"
+            height="130"
+            src="https://npuh82iut7x3aosxba3ol14m-wpengine.netdna-ssl.com/wp-content/uploads/2018/11/ucdavismedical-740x675.jpg"
+            width="130"
+          />
+          <p
+            className="app-title-text"
+          >
+             UC Davis Medical Portal
+          </p>
+        </div>
+        <div
+          className="applisting-box"
+        />
+        <div
+          className="applisting-box"
+        />
+        <div
+          className="applisting-box"
+        />
+      </div>
+    </header>
+  </div>
+</div>
+`;
