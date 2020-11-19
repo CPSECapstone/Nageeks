@@ -2,6 +2,7 @@ var express = require('express');
 const { findById } = require('../models/user');
 var router = express.Router();
 const User = require('../models/user');
+const mongoose = require('../mongoose_connection');
 const uri = "http://api.cloudhaven.com"
 
 router.route('/')
@@ -15,7 +16,7 @@ router.route('/')
         }
         catch (err){
             console.error(err.message);
-            res.status(404).json({message: "Error 404: Not Found"});
+            res.status(404).json({message: "Error 404: User collection not found"});
         }
     })
     // project admin routes with user authentication, access control, session management, and TLS/SSL
@@ -67,6 +68,15 @@ router.route('/')
         await Promise.all(promises);
         // chose not to return any json because its a bulk operation 
         res.sendStatus(status);
+    })
+    .delete(async function(req, res, next){
+        try{
+            await User.deleteMany({});
+            res.sendStatus(204);
+        }
+        catch(err){
+            res.status(404).json({message: "Error 404: User collection not found"});
+        }
     });
 
 router.route('/:uid')
@@ -75,7 +85,7 @@ router.route('/:uid')
         res.status(200).json(user);
     })
     .post(function(req, res, next){
-        res.status(400).json({message: "Post requests to existing users are not allowed."});
+        res.status(400).json({message: "Error 400: Post requests to existing users are not allowed."});
     });
 
 

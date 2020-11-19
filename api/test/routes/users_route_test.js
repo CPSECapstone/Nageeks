@@ -55,7 +55,7 @@ describe("Testing /users route", function() {
 
     beforeEach(async function() {
         try{
-            await mongoose.dropCollection('users');
+            await User.deleteMany({});
             users = await createUsers();
         }
         catch(err){
@@ -65,7 +65,7 @@ describe("Testing /users route", function() {
 
     after(async function() {
         try{
-            await mongoose.dropCollection('users');
+            await User.deleteMany({});
         }
         catch(err){
             console.log(err.message);
@@ -83,25 +83,12 @@ describe("Testing /users route", function() {
         assert.deepStrictEqual(expected, actual);
     });
 
-    it("Find all users (404) - GET on /users", async function(){
-        const expected = {message: "Error 404: Not Found"}
-        const res = await request(app).get('/users')
-            .expect('Content-Type', /json/)
-            .expect(404);
-        const actual = res.body;
-        assert.deepStrictEqual(expected, actual);
-    });
-
     it("Find user by uid - GET on /users/:uid", async function(){
         const expected = users[0]._id.toString();
         const res = await request(app).get(`/users/${users[0]._id.toString()}`)
             .expect('Content-Type', /json/)
             .expect(200);
         const actual = res.body._id;
-        //console.log(res.body);
-        // console.log(typeof expected[0]); bson object because user model uses bson
-        // console.log(typeof actual[0]); string because of res.json
-        //console.log(res.body)
         assert.strictEqual(expected, actual);
     });
 {message: "Post requests to existing users are not allowed."}
@@ -153,7 +140,7 @@ describe("Testing /users route", function() {
         assert.strictEqual(expected, actual);
     });
 
-    it("Bulk update of customers - Put on /users/", async function(){
+    it("Bulk update of users - Put on /users/", async function(){
         // ex - when we need to update userinfo for batches of users
         // can use put /users in intervals to improve performance rather than
         // calling many put /users/:id 
@@ -184,4 +171,14 @@ describe("Testing /users route", function() {
         actual = res.body.lastName;
         assert.strictEqual(reqBody[1].lastName, actual);
     });
+
+    it("Remove all users, 204 on DELETE - DELETE /users", async function(){
+        // there are customers to delete
+        await request(app).delete(`/users`)
+            .expect(204);
+        let res = await request(app).get(`/users`)
+            .expect(200); // should get an empty array []
+        assert.deepEqual([], res.body);
+    });
+
 });
