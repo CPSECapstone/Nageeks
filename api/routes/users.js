@@ -1,5 +1,5 @@
 var express = require('express');
-const { findById } = require('../models/user');
+var createError = require('http-errors');
 var router = express.Router();
 const User = require('../models/user');
 const mongoose = require('../mongoose_connection');
@@ -75,14 +75,17 @@ router.route('/')
             res.sendStatus(204);
         }
         catch(err){
-            res.status(404).json({message: "Error 404: User collection not found"});
+            next(createError(404));
         }
     });
 
 router.route('/:uid')
     .get(async function(req, res, next) {
         const user = await User.findById(req.params.uid); 
-        res.status(200).json(user);
+        if (user){
+            res.status(200).json(user);
+        }
+        next(createError(404));
     })
     .post(function(req, res, next){
         res.status(400).json({message: "Error 400: Post requests to existing users are not allowed."});

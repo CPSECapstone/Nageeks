@@ -55,14 +55,14 @@ const userSchema = new Schema({
             validator: (v) => {
               return /\d{3}-\d{3}-\d{4}/.test(v);
             },
-            message: props => `${props.value} is not a valid phone number.`
+            message: props => `${props.value} is not a valid phone number`
           },
     },
 });
 
-userSchema.methods.getName = function(){
-    return this.firstName + " " + this.lastName;
-}
+//userSchema.methods.getName = function(){
+    //return this.firstName + " " + this.lastName;
+//}
 
 const User = mongoose.model('User', userSchema, 'users');
 

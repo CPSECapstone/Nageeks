@@ -91,9 +91,19 @@ describe("Testing /users route", function() {
         const actual = res.body._id;
         assert.strictEqual(expected, actual);
     });
-{message: "Post requests to existing users are not allowed."}
+    
+    it("Find user by uid that does not exist - GET on /users/:uid", async function(){
+        const uid = ObjectID().toString()
+        const expected = "Error 404: Not Found";
+        const res = await request(app).get(`/users/${uid}`)
+            .expect(404);
+        const actual = res.body.message;
+        assert.strictEqual(expected, actual);
+    });
+
+
     // this request is not allowed, expect a 400 response
-    it("Find user by uid - POST on /users/:uid", async function(){
+    it("Add user by uid - POST on /users/:uid", async function(){
         const expected = {message: "Error 400: Post requests to existing users are not allowed."};
         const res = await request(app).post(`/users/${users[0]._id.toString()}`)
             .expect('Content-Type', /json/)
