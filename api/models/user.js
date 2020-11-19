@@ -64,6 +64,7 @@ userSchema.methods.getName = function(){
     return this.firstName + " " + this.lastName;
 }
 
-const user = mongoose.model('user', userSchema, 'users');
+const User = mongoose.model('User', userSchema, 'users');
 
-module.exports = user;
+
+module.exports = User;

@@ -28,6 +28,7 @@ async function createUser(){
     return user;
 }
 
+// only tested happy paths - need to test errors
 describe("CRUD testing user model", function() {
     let user = null;
     before(async function(){
