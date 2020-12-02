@@ -34,7 +34,7 @@ router.route('/')
 
         // find existing users
         let promises = [];
-        console.log(req.body);
+        // console.log(req.body);
         req.body.forEach(user => {
             promises.push(User.findById(user._id));
         });

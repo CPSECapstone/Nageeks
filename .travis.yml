@@ -19,4 +19,4 @@ script:
   - npm start &
   - sleep 5
   - cd api && npm run test-travis
-  - cd client && npm test a
+  - cd ../client && npm test
