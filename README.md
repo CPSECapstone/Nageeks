@@ -7,9 +7,10 @@ Built using React.js as Front-end, Node.js/Express.js as Back-end, MongoDB as Da
 ## Make sure you have Node.js installed locally
 
 Check your Node.js version with the following command:  
-    node --version
+    node --version 
+
 Additionally check your version of npm:  
-    npm --version
+    npm --version 
 
 If node or npm are missing or out of date:  
 https://nodejs.org/en/download/  
