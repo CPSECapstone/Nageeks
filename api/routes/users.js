@@ -22,6 +22,7 @@ router.route('/')
     // project admin routes with user authentication, access control, session management, and TLS/SSL
     // insert one new user
     .post(async function(req, res, next) {
+        // hangs if request body is empty or wrong format
         const user = new User(req.body);
         const doc = await user.save();
         res.set({'Location': uri + req.baseUrl.toString() + '/' + user._id.toString()}).status(201).json(doc);
@@ -33,12 +34,14 @@ router.route('/')
 
         // find existing users
         let promises = [];
+        console.log(req.body);
         req.body.forEach(user => {
             promises.push(User.findById(user._id));
         });
 
         const docs = await Promise.all(promises);
         let docMap = new Map();
+        // docs can be empty here if the db is empty - attempting to put before any users in db will cause error
         docs.forEach(user =>{
             docMap.set(user._id.toString(), user)
         });
