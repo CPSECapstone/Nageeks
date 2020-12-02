@@ -72,3 +72,32 @@ From client/:
 client/src/App.js is the React.js front-end main module, being run on http://localhost:3000 
 
 api/app.js is the Node.js/Express.js back-end main module, being run on http://localhost:3001
+
+## List of Dependenceies and Links to their Documentation 
+
+### Back-End Dependencies
+* axios: https://www.npmjs.com/package/axios
+* concurrently: https://www.npmjs.com/package/concurrently
+* cookie-parser: https://www.npmjs.com/package/cookie-parser
+* debug: https://www.npmjs.com/package/debug
+* dotenv: https://www.npmjs.com/package/dotenv
+* express: https://expressjs.com/
+* http-errors: https://www.npmjs.com/package/http-errors
+* mongodb: https://docs.mongodb.com/
+* mongoose: https://mongoosejs.com/ 
+* morgan: https://www.npmjs.com/package/morgan
+
+### Back-End Development Dependencies
+* chai: https://www.chaijs.com/ 
+* chai-as-promised: https://www.chaijs.com/ 
+* cross-env: https://www.chaijs.com/ 
+* mocha: https://mochajs.org/
+* nodemon: https://nodemon.io/ 
+* nyc: https://www.npmjs.com/package/nyc
+* supertest: https://www.npmjs.com/package/supertest
+
+### Front-End Dependencies
+* axios: https://www.npmjs.com/package/axios
+* jest: https://jestjs.io/docs/en/getting-started
+* material-ui: https://material-ui.com/getting-started/usage/
+* react: https://www.npmjs.com/package/axios
