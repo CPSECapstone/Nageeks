@@ -18,5 +18,5 @@ install:
 script:
   - npm start &
   - sleep 5
-  - cd api && npm test
+  - cd api && npm run test-travis
   - cd client && npm test a
