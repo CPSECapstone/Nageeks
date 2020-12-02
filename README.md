@@ -22,9 +22,8 @@ https://nodejs.org/en/download/
 ### Create your api/config/keys_dev.js file
 api/config/keys_dev.js contains all of your developer secrets like:  
 
-    * Your MongoDB URI. You will need to update the URI with your given username and password 
-
-    * Any API keys necessary for development 
+* Your MongoDB URI. You will need to update the URI with your given username and password 
+* Any API keys necessary for development 
 
 
 example:
