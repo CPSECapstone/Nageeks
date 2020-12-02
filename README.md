@@ -73,6 +73,9 @@ From client/:
 
     npm test
 
+## Continuous Integration: Travis-CI
+https://travis-ci.org/github/CPSECapstone/Nageeks/pull_requests
+
 ## List of Dependenceies and Links to their Documentation 
 
 ### Back-End Dependencies
