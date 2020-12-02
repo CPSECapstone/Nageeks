@@ -56,6 +56,10 @@ From Nageeks/:
 
     npm start 
 
+client/src/App.js is the React.js front-end main module, being run on http://localhost:3000 
+
+api/app.js is the Node.js/Express.js back-end main module, being run on http://localhost:3001
+
 ## Testing
 
 ### Back-End Testing
@@ -68,10 +72,6 @@ From api/:
 From client/:  
 
     npm test
-
-client/src/App.js is the React.js front-end main module, being run on http://localhost:3000 
-
-api/app.js is the Node.js/Express.js back-end main module, being run on http://localhost:3001
 
 ## List of Dependenceies and Links to their Documentation 
 
