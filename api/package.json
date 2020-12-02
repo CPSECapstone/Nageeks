@@ -6,6 +6,7 @@
     "start": "node ./bin/www",
     "start-dev": "nodemon ./bin/www",
     "test": "cross-env NODE_ENV=test mocha --recursive",
+    "test-travis": "mocha --recursive",
     "coverage": "cross-env NODE_ENV=test nyc mocha --recursive"
   },
   "dependencies": {
