@@ -35,7 +35,7 @@ export default function Sidebar (props) {
         className= {sidebarNum === 3 ? "side-bar-active" : "side-bar-button"}
         onClick={(e) => openContent(e, 3)}
       >
-        Form
+        Forms
       </button>
       <div className="sidebar-fill"></div>
     </div>
