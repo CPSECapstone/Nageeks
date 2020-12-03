@@ -5,7 +5,7 @@ import Customers from './components/customers';
 import EventCalendar from './components/eventCalendar';
 import Sidebar from './components/Sidebar';
 import Banner from './components/Banner';
-
+import Form from './components/form';
 
 function App() {
   const [pageNum, setPageNum] = useState(0)
@@ -18,6 +18,8 @@ function App() {
       page = <Customers />
     } else if (pageNum === 2) {
       page = <EventCalendar />
+    }else if (pageNum === 3){
+      page = <Form />
     }
     return page;
   }
