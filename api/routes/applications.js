@@ -9,16 +9,16 @@ var axios = require('axios');
 router.route('/UCDavis/forms/a')
     // get form from thirdparty application
     .get(async function(req, res, next) {
+        const url = 'https://localhost:3002/forms/a';
         try{
             // get axios data from the third party application
-            axios.get('')
-            // res.json will convert the get from axios to json and send that in the response
-            res.status(200).json();
+            return await axios.get(url);
         }
         catch (err){
             console.error(err.message);
-            res.status(404).json({message: "Error 404: User collection not found"});
+            res.status(404).json({message: "Error 404: Form not found"});
         }
     })
+    
 
 module.exports = router;
