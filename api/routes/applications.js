@@ -13,8 +13,7 @@ router.route('/UCDavis/forms/:formId')
         try{
             // get axios data from the third party application
             const formData = await axios.get(url);
-            console.log(formData);
-            return res.status(200).json(formData);
+            return res.status(200).json(formData.data);
         }
         catch (err){
             console.error(err.message);
