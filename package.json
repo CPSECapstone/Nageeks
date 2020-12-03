@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "start": "concurrently \"npm start --prefix ./api\" \"npm start --prefix ./client\"",
+        "install-dev": "sh ./scripts/install-dev.sh"
+    },
+    "devDependencies": {
+        "concurrently": "^5.3.0"
+    }
+}
