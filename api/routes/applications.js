@@ -2,7 +2,6 @@ var express = require('express');
 var createError = require('http-errors');
 var router = express.Router();
 var axios = require('axios');
-const { RequestHeaderFieldsTooLarge } = require('http-errors');
 
 //http
 //store collection of uris in DB or file that gets updates
