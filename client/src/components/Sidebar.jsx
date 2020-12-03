@@ -56,6 +56,12 @@ export default function Sidebar (props) {
        >
          Calendar
        </Button>
+      <Button 
+        onClick={(e) => openContent(e, 3)}
+        className= {sidebarNum === 3 ? classes.activeButtonStyle: classes.buttonStyle}
+      >
+        Forms
+      </Button>
 
     </Grid>
   );
