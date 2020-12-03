@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -14,22 +13,6 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
-
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "http://localhost:3001/application/forms/a");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
-
-app.use(cors());
-app.get('/products/:id', function (req, res, next) {
-  res.json({msg: 'This is CORS-enabled for all origins!'})
-})
-
-app.listen(80, function () {
-  console.log('CORS-enabled web server listening on port 80')
-})
 
 app.use(logger('dev'));
 app.use(express.json());
