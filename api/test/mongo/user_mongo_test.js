@@ -28,6 +28,7 @@ async function createUser(){
     return user;
 }
 
+// only tested happy paths - need to test errors
 describe("CRUD testing user model", function() {
     let user = null;
     before(async function(){
@@ -36,7 +37,7 @@ describe("CRUD testing user model", function() {
 
     beforeEach(async function() {
         try{
-            await mongoose.dropCollection('users');
+            await User.deleteMany({});
             user = await createUser();
         }
         catch(err){
@@ -46,7 +47,7 @@ describe("CRUD testing user model", function() {
 
     after(async function() {
         try{
-            await mongoose.dropCollection('users');
+            await User.deleteMany({});
         }
         catch(err){
             console.log(err.message);
@@ -83,6 +84,34 @@ describe("CRUD testing user model", function() {
         // finds doc by id, removes it, passes found doc (if any) to callback
         const actual = await User.findByIdAndDelete(user._id);
         assert.equal(actual._id.toString(), user._id.toString(), "Id of deleted user should match desired user id");
+    });
+
+    it("Add user with invalid phone number", async function(){
+        // finds doc by id, removes it, passes found doc (if any) to callback
+        const invalidUser = new User({
+            _id: ObjectID(),
+            schemaVersion: 1.0,
+            firstName: "Deku",
+            lastName: "Harms",
+            dob: new Date('1990-08-15T06:15:30.000+00:00'),
+            address: {
+                country: "United States", 
+                firstLine: "400 Pacheco Way",
+                secondLine: "",
+                city: "San Luis Obispo",
+                state: "CA",
+                zipCode: "93410",
+            },
+            phoneNumber: "391-9054"
+        });
+
+        const expected = `User validation failed: phoneNumber: ${invalidUser.phoneNumber} is not a valid phone number`;
+        try{
+            await invalidUser.save();
+        }
+        catch(err){
+            assert.strictEqual(expected, err.message);
+        }
     });
 
 });
