@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Card, CardHeader, Grid, Typography} from '@material-ui/core'
 import Axios from "axios";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -12,47 +13,77 @@ const useStyles = makeStyles((theme) => ({
       color: 'white'
     },
   },
+
+  uiaas: {
+    backgroundColor: "inherit",
+  },
+
+  card: {
+    backgroundColor: "inherit",
+  },
+
+  cardheader: {
+    color: "whitesmoke",
+    fontSize: "20px",
+  },
+
+  textfield: {
+    color: "whitesmoke",
+    fontSize: "20px",
+  },
 }));
 
 
 export default function Form() {
-    const [formNum, setFormNum] = useState(0)
-    const [customers, setCustomers] = useState([0]) 
-    const classes = useStyles();
+  const [formNum, setFormNum] = useState(0)
+  const [customers, setCustomers] = useState([0]) 
+  const [forms, setForms] = useState([0]) 
+  const classes = useStyles();
 
-    useEffect(() => {
-        // Axios Method
-        Axios({
-            method: 'GET',
-            url: '/customers',
-        }).then(res => 
-            res.data,
-        ).then(customers =>     
-            setCustomers(customers)
-        );
-    }, [formNum]);
+  useEffect(() => {
+      // Axios Method
+      Axios({
+          method: 'GET',
+          url: '/applications/UCDavis/forms/b',
+      }).then(res => 
+          res.data,
+      ).then(forms =>     
+          setForms(forms)
+      );
+  }, [formNum]);
 
-    function displayCustomers() {
-        return customers.map((customer) => 
-        <div>
-            <TextField id="filled-basic" label={customer.username} variant="filled"/>
-        </div>   
-        );
-        }
+  function displayForms() {
+    return (
+      Object.getOwnPropertyNames(forms).map((fieldName) => 
+        <TextField color="whitesmoke" className="textfield" label={fieldName} variant="filled"/>
+      )
+    );
+  }
 
-        return (
-            <div>
-                <form className={classes.root}>
-                <h2>Customers</h2>
-                    <div>
-                        {displayCustomers()}
-                    </div>
-                </form>
-                <Button 
-                    onClick={() => { setFormNum( formNum + 1) }}
-                    variant="contained" color="primary" href="">
-                    Next Page
-                </Button>
-            </div>
-        );
-    }
+  return (
+    <Grid
+      container
+      justify="center"
+      alignItems="center"
+      direction="row"
+    >
+      <Grid item xs={8} container justify="center">
+          <Card
+            className={classes.card}
+          >
+            <Grid item xs={8}>
+              <Typography className={classes.cardheader}> UIaaS Demo </Typography>
+            </Grid>
+              <form className={classes.root}>
+                                {displayForms()}
+              </form>
+              <Button 
+                  onClick={() => { setFormNum( formNum + 1) }}
+                  variant="contained" color="primary" href="">
+                  Next Page
+              </Button>
+          </Card>
+      </Grid>
+    </Grid>
+  );
+}
