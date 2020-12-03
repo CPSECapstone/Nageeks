@@ -6,19 +6,20 @@ var axios = require('axios');
 //http
 //store collection of uris in DB or file that gets updates
 
-router.route('/UCDavis/forms/a')
+router.route('/UCDavis/forms/:formId')
     // get form from thirdparty application
     .get(async function(req, res, next) {
-        const url = 'https://localhost:3002/forms/a';
+        const url = `http://localhost:3002/forms/${req.params.formId}`;
         try{
             // get axios data from the third party application
-            return await axios.get(url);
+            const formData = await axios.get(url);
+            console.log(formData);
+            return res.status(200).json(formData);
         }
         catch (err){
             console.error(err.message);
-            res.status(404).json({message: "Error 404: Form not found"});
+            return res.status(404).json({message: "Error 404: Form not found"});
         }
     })
-    
 
 module.exports = router;
