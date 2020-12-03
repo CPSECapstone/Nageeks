@@ -1,16 +1,44 @@
 import React, {useState} from 'react';
+import { Box, Card, CardContent, CardHeader, Grid } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import "./Applisting.css"
+import AppCard from './AppCard';
+
+const useStyles = makeStyles({
+  containerStyle: {
+    justify: "center",
+    align: "center",
+    alignItems: "center",
+  },
+  cardStyle: {
+  },
+})
 
 export default function Applistings(props) {
+  const classes = useStyles();
+
   return (
-      <div className="applist">
-        <div className="applisting-box">
-          <img className="app-pic" src="https://npuh82iut7x3aosxba3ol14m-wpengine.netdna-ssl.com/wp-content/uploads/2018/11/ucdavismedical-740x675.jpg" alt="UC Davis Medical" width="130" height="130"/>
-        <p className="app-title-text"> UC Davis Medical Portal</p>
-        </div>
-        <div className="applisting-box"></div>
-        <div className="applisting-box"></div>
-        <div className="applisting-box"></div>
-      </div>
+    <Box style={{padding: "30px"}}>
+    <Grid 
+      item
+      container
+      className={classes.containerStyle}
+      justify="space-evenly"
+      spacing={6}
+    >
+      <Grid item xs={3}>
+        <AppCard />
+      </Grid>
+      <Grid item xs={3}>
+        <AppCard/>
+      </Grid>
+      <Grid item xs={3}>
+        <AppCard/>
+      </Grid>
+      <Grid item xs={3}>
+        <AppCard/>
+      </Grid>
+    </Grid>
+    </Box>
     );
 }
