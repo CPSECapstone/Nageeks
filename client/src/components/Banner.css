@@ -2,6 +2,7 @@
 .banner {
     height: 50px;
     text-align: left;
+    padding-top: 8px;
     /* margin-left: 20px; */
     background-color: #2d3742;
     text-decoration-color: aliceblue;
@@ -11,12 +12,27 @@
     color: whitesmoke;
     font-size: 30px;
     margin-left: 40px;
+    text-decoration: none;
+}
+
+.banner-text:hover {
+    color: grey;
+    font-size: 30px;
+    margin-left: 40px;
+    cursor: pointer;
 }
 
 .banner-account {
     float: right;
     color: whitesmoke;
-    font-size: 15px;
+    font-size: 17px;
     margin-right: 40px;
-    margin-top: 10px;
+    text-decoration: none;
+}
+
+.banner-account:hover {
+    float: right;
+    color: grey;
+    font-size: 17px;
+    margin-right: 40px;
 }
