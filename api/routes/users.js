@@ -3,7 +3,9 @@ var createError = require('http-errors');
 var router = express.Router();
 const User = require('../models/user');
 const mongoose = require('../mongoose_connection');
-const uri = "http://api.cloudhaven.com"
+const auth = require('../auth');
+const e = require('express');
+const uri = "http://localhost:3001"
 
 router.route('/')
     // get all users
@@ -23,9 +25,10 @@ router.route('/')
     // insert one new user
     .post(async function(req, res, next) {
         // hangs if request body is empty or wrong format
-        const user = new User(req.body);
+        // let uid = ObjectId();
+        const user = new User(req.body); // assign object id and all other crap from req body
         const doc = await user.save();
-        res.set({'Location': uri + req.baseUrl.toString() + '/' + user._id.toString()}).status(201).json(doc);
+        res.set({'Location': uri + req.baseUrl.toString() + '/' + user._id.toString()}).sendStatus(201);
     })
     // update users if they are already found in the database, otherwise create them
     .put(async function(req, res, next) {
@@ -83,17 +86,38 @@ router.route('/')
     });
 
 router.route('/:uid')
-    .get(async function(req, res, next) {
+    .get(auth, async function(req, res, next) {
         const user = await User.findById(req.params.uid); 
         if (user){
             res.status(200).json(user);
         }
-        next(createError(404));
+        else{
+            res.sendStatus(404)
+        }
     })
     .post(function(req, res, next){
         res.status(400).json({message: "Error 400: Post requests to existing users are not allowed."});
+    })
+    .put(async function(req, res, next){
+        try{
+            const user = await User.findById(req.params.uid); 
+            for (let prop in req.body){
+                if (user[prop]){
+                    user[prop] = req.body[prop];
+                }
+            }
+            try{
+                await user.save();
+                res.status(200).json();
+            }
+            catch(err){
+                res.status(400).json(err);
+            }
+        }
+        catch(err){
+            res.status(404).json(err);
+        }
     });
-
 
 
 module.exports = router;
