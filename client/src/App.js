@@ -7,6 +7,7 @@ import Banner from './components/Banner';
 import Form from './components/form';
 import { Grid, Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import { Button } from '@material-ui/core'
 
 const useStyles = makeStyles({
   sidebarStyle: {
@@ -17,6 +18,19 @@ const useStyles = makeStyles({
     backgroundColor: "#444449",
     fontSize: "18px",
     justify: "center",
+  },
+  buttonStyle: {
+    height: "55px",
+    textAlign: "right",
+    color: "whitesmoke",
+    fontSize: "18px",
+  },
+  activeButtonStyle: {
+    height: "55px",
+    textAlign: "right",
+    color: "whitesmoke",
+    fontSize: "18px",
+    backgroundColor: "#444449",
   },
 })
 
@@ -29,7 +43,39 @@ function App() {
     if (pageNum === 0) {
       page = <Applistings/>
     } else if (pageNum === 1) {
-      page = <Customers />
+      page =  <Grid 
+                container
+                justify="center"
+                direction="row"
+              > 
+                <Grid item xs={1}>
+                      <Grid
+                        container
+                        direction="column"
+                        className={classes.sidebarStyle}
+                      >
+                        <Button 
+                          className= {classes.activeButtonStyle}
+                        >
+                          Personal
+                        </Button>
+                        <Button 
+                          className= {classes.buttonStyle}
+                        >
+                          Medical
+                        </Button>
+                        <Button 
+                          className= {classes.buttonStyle}
+                        >
+                          Financial
+                        </Button>
+
+                      </Grid>
+                </Grid>
+                <Grid item xs={11}>
+                  <Customers /> 
+                </Grid>
+              </Grid>
     } else if (pageNum === 2) {
       page = <EventCalendar />
     }else if (pageNum === 3){

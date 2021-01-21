@@ -35,7 +35,7 @@ function DataField(props) {
         InputProps={{classes: {input: classes.multilineColor}}} 
         id="field"
         label={props.fieldName} 
-        defaultValue="" 
+        defaultValue={props.currentValue}
         InputLabelProps={{
           style: { color: 'whitesmoke' },
         }}
@@ -65,13 +65,13 @@ function Customers () {
           >
             <Grid item>
               <form className={classes.root} noValidate autoComplete="off">
-                <DataField fieldName="First Name"/>
-                <DataField fieldName="Last Name"/>
-                <DataField fieldName="Date of Birth"/>
-                <DataField fieldName="Phone Number"/>
-                <DataField fieldName="Email"/>
-                <DataField fieldName="State"/>
-                <DataField fieldName="Address"/>
+                <DataField fieldName="First Name" currentValue="Jeff"/>
+                <DataField fieldName="Last Name" currentValue="Pesos"/>
+                <DataField fieldName="Date of Birth" currentValue="05/05/1963"/>
+                <DataField fieldName="Phone Number" currentValue="(619) 916 7821"/>
+                <DataField fieldName="Email" currentValue="jp234@gmail.com"/>
+                <DataField fieldName="State" currentValue="California"/>
+                <DataField fieldName="Address" currentValue="151 Beach Rd"/>
               </form>
               <Button className={classes.updateButton} variant="contained" color="primary">
                 Update Data
