@@ -27,12 +27,7 @@ class Encrypt {
 
         // bcrypt only accepts up to 72 bytes of input - probably nothing to worry about
         // could modify it to accept more pretty easily, or just use a reasonably sized maximum password length
-        var bytes = [];
-        for (var i = 0; i < password.length; ++i) {
-            var code = password.charCodeAt(i);
-
-            bytes = bytes.concat([code & 0xff, code / 256 >>> 0]);
-        }
+        var bytes = new TextEncoder().encode(password);
 
         if (bytes.length > 72) {
             throw Error("password too long");
