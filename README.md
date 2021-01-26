@@ -80,6 +80,7 @@ https://travis-ci.org/github/CPSECapstone/Nageeks/pull_requests
 
 ### Back-End Dependencies
 * axios: https://www.npmjs.com/package/axios
+* bcryptjs: https://www.npmjs.com/package/bcryptjs
 * concurrently: https://www.npmjs.com/package/concurrently
 * cookie-parser: https://www.npmjs.com/package/cookie-parser
 * debug: https://www.npmjs.com/package/debug
