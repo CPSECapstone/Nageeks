@@ -12,6 +12,8 @@ class Encrypt {
         }
     }
 
+    // generates a new Encrypt from a given hashcode and salt
+    // useful for retrieving stuff from a database
     static FromHashAndSalt(hashCode, salt) {
         var encrypt = new Encrypt();
 
@@ -22,6 +24,9 @@ class Encrypt {
     }
 
     hashPassword(password) {
+
+        // bcrypt only accepts up to 72 bytes of input - probably nothing to worry about
+        // could modify it to accept more pretty easily, or just use a reasonably sized maximum password length
         var bytes = [];
         for (var i = 0; i < password.length; ++i) {
             var code = password.charCodeAt(i);
@@ -36,6 +41,7 @@ class Encrypt {
         return bcrypt.hashSync(password, this._salt);
     }
 
+    // checks if the input password is correct
     verifyPassword(password) {
         var testHashCode = this.hashPassword(password);
 
