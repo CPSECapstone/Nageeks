@@ -1,5 +1,6 @@
 import React, {useState, setState} from 'react';
 import Applistings from './components/Applisting';
+import Doctor from './components/Doctor';
 import Customers from './components/customers';
 import EventCalendar from './components/eventCalendar';
 import Sidebar from './components/Sidebar';
@@ -32,9 +33,12 @@ function App() {
       page = <Customers />
     } else if (pageNum === 2) {
       page = <EventCalendar />
-    }else if (pageNum === 3){
+    } else if (pageNum === 3){
       page = <Form />
+    } else if(pageNum === 4){
+      page = <Doctor/>
     }
+
     return page;
   }
 

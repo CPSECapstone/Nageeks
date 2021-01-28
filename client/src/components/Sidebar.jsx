@@ -62,6 +62,12 @@ export default function Sidebar (props) {
       >
         Forms
       </Button>
+      <Button 
+        onClick={(e) => openContent(e, 4)}
+        className= {sidebarNum === 4 ? classes.activeButtonStyle: classes.buttonStyle}
+      >
+        Patient Info
+      </Button>
 
     </Grid>
   );
