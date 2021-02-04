@@ -6,6 +6,7 @@ import EventCalendar from './components/eventCalendar';
 import Sidebar from './components/Sidebar';
 import Banner from './components/Banner';
 import Form from './components/form';
+import Login from './Login';
 import { Grid, Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -34,8 +35,10 @@ function App() {
     } else if (pageNum === 2) {
       page = <EventCalendar />
     } else if (pageNum === 3){
-      page = <Form />
-    } else if(pageNum === 4){
+      page = <Form/>
+    } else if (pageNum === 4){
+      page = <Login/>
+    } else if(pageNum === 5){
       page = <Doctor/>
     }
 
@@ -79,4 +82,3 @@ function App() {
 }
 
 export default App;
-
