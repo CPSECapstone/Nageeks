@@ -29,18 +29,10 @@ const userSchema = new Schema({
                 if (!roles){
                     return false;
                 }
-
-                // each org should have a list of strings
+                // each org should just have one string for credibility
                 for (org in roles){
-                    if (!roles[org]){
+                    if (!(roles[org]) || !(typeof roles[org] === 'string')){
                         return false;
-                    }
-                    else{
-                        for (role of roles[org]){
-                            if (!(typeof role === 'string') || role.length < 1){
-                                return false;
-                            }
-                        }
                     }
                 }
                 return true;
