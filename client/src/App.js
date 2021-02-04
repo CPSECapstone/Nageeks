@@ -55,7 +55,7 @@ function App() {
                         className={classes.sidebarStyle}
                       >
                         <Button 
-                          className= {classes.activeButtonStyle}
+                          className= {classes.buttonStyle}
                         >
                           Personal
                         </Button>
@@ -65,7 +65,7 @@ function App() {
                           Medical
                         </Button>
                         <Button 
-                          className= {classes.buttonStyle}
+                          className= {classes.activeButtonStyle}
                         >
                           Financial
                         </Button>
