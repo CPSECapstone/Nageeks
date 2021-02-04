@@ -16,6 +16,11 @@ router.route('/UCDavis/forms/:formId')
         else if(formId === "b") {
             return res.status(200).json({country: 'textfield', firstLine: 'textfield', secondLine: 'textfield', city: 'textfield', state: 'textfield', zipcode: 'textfield'});
         }
+        //TODO routing to an actual 3rd party would take care of what forms show up but need to find a way to 
+        //tokenize user to send to third party app
+        else if(formId === "emplA") {
+            return res.status(200).json({Client: 'textfield', city: 'textfield', state: 'textfield', zipcode: 'textfield'});
+        }
         else {
             return res.status(404).json({message: 'Form not available', formid: formId})
         }
