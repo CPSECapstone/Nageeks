@@ -18,7 +18,7 @@ router.route('/')
             res.status(200).json(sessions);
         }
         catch(err){
-            res.status(404).send({error: err});
+            res.status(400).send({error: "badLogin"});
         }
     })
     // login
