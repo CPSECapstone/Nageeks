@@ -2,7 +2,8 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
-var session = require('express-session')
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 
 const dotenv = require('dotenv');
 dotenv.config({path: __dirname+'/config/.env'});
@@ -14,6 +15,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var sessionsRouter = require('./routes/sessions');
 var appsRouter = require('./routes/applications');
+const { key } = require('./config/keys_prod');
 
 var app = express();
 
@@ -22,18 +24,29 @@ app.use(express.json()); // middleware for POST and PUT that recognizes req.body
 app.use(express.urlencoded({ extended: false })); // middleware that only parses and only UTF-8 encoded bodies
 app.use(express.static(path.join(__dirname, 'public')));
 
-const SESS_LIFETIME = 10 * 1000; // 2 hours
+
+const SESS_LIFETIME = 2 * 60 * 60 * 1000; // 2 hours
+console.log(keys.mongoStoreSecret);
+mongoConnect = new MongoStore({
+  mongooseConnection: mongo,
+  secret: "my secret key",
+  ttl: SESS_LIFETIME,
+  //autoRemove: 'interval',
+  //autoRemoveInterval: SESS_LIFETIME * 4
+});
 
 app.use(session({
-    name: "CloudHavenAuth",
-    resave: false,
-    saveUninitialized: false,
-    secret: keys.expressSessionSecret,
-    cookie: {
-        maxAge: SESS_LIFETIME,
-        domain: app.get('env') === 'production' ? "cloudHavenDomain" : "localhost",
-        secure: app.get('env') === 'production'
-    }
+  name: "CloudHavenAuth",
+  resave: false,
+  saveUninitialized: false,
+  //key_size: keys.expressSessionSecret.length,
+  secret: keys.expressSessionSecret,
+  cookie: {
+      maxAge: SESS_LIFETIME,
+      domain: app.get('env') === 'production' ? "cloudHavenDomain" : "localhost",
+      secure: app.get('env') === 'production'
+  },
+  store: mongoConnect
 }));
 
 app.use('/', indexRouter);
