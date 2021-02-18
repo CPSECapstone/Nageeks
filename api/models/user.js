@@ -1,15 +1,44 @@
 const { ObjectID } = require('mongodb');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+// test commit
 
 const userSchema = new Schema({
+    schemaVersion: {
+        type: Number,
+        required: [true, "Schema version required"],
+    },
     _id: {
         type: ObjectID,
         required: [true, "ID required"],
     },
-    schemaVersion: {
-        type: Number,
-        required: [true, "Schema version required"],
+    email: { // need to add validation against using dupEmail
+        type: String,
+        required: [true, "Email required"],
+    },
+    password: { // this needs to be stored by using salted bcrypt, but for now, plain text it is
+        type: String,
+        required: [true, "Password required"],
+    },
+    roles: {
+        type: Object,
+        required: [true, "Roles required"],
+        validate: {
+            validator: (roles) => {
+                // no orgs contained in roles prop should fail
+                if (!roles){
+                    return false;
+                }
+                // each org should just have one string for credibility
+                for (org in roles){
+                    if (!(roles[org]) || !(typeof roles[org] === 'string')){
+                        return false;
+                    }
+                }
+                return true;
+            },
+            message: "Roles bad formatting"
+        },
     },
     firstName: {
         type: String,

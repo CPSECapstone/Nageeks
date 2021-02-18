@@ -46,8 +46,10 @@ example:
     MONGO_URI="mongoUri here"
     KEY: "some API key here"
 
-## Install dependences
+## Install dependencies
 node_modules should be created in Nageeks/, api/, and client/
+
+From Nageeks/:
 
     npm run install-dev  
 
