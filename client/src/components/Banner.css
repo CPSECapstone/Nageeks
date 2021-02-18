@@ -2,7 +2,7 @@
 .banner {
     height: 50px;
     text-align: left;
-    padding-top: 8px;
+    padding-top: 12px;
     /* margin-left: 20px; */
     background-color: #2d3742;
     text-decoration-color: aliceblue;
@@ -10,6 +10,7 @@
 
 .banner-text {
     color: whitesmoke;
+    float: left;
     font-size: 30px;
     margin-left: 40px;
     text-decoration: none;
@@ -27,6 +28,7 @@
     color: whitesmoke;
     font-size: 17px;
     margin-right: 40px;
+    margin-top: 6px;
     text-decoration: none;
 }
 
@@ -35,4 +37,12 @@
     color: grey;
     font-size: 17px;
     margin-right: 40px;
+}
+
+.banner-menu {
+    float: right;
+}
+
+.menu-div {
+    float: right;
 }
