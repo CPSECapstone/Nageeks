@@ -109,7 +109,15 @@ function Login() {
                     id="custom-css-outlined-input"
                     />
                   
-                  <Button variant="contained" color="primary" href="" className={classes.Button}>{buttonText}</Button> 
+                  <Button variant="contained" color="primary" href="" className={classes.Button} onClick={() => {
+                      if(buttonStatus)
+                      {
+                        // TODO: send username & password data to database for login
+                      }
+                      else
+                      {
+                        // TODO: send username & password data to database for sign up
+                      }}}>{buttonText}</Button>
                   <Button onClick={() => {
                     if(buttonStatus)
                     {
