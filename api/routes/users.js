@@ -4,7 +4,6 @@ var router = express.Router();
 const User = require('../models/user');
 const mongoose = require('../mongoose_connection');
 const auth = require('../auth');
-const e = require('express');
 const uri = "http://localhost:3001"
 
 router.route('/')
