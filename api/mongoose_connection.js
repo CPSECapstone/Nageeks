@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
+var app = require('./app.js');
 
 // connect to MongoDB 
+const SESS_LIFETIME = 2 * 60 * 60 * 1000; // 2 hours
 const uri = keys.mongoURI;
+var mongoConnect = null;
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // check connection
@@ -21,4 +24,4 @@ process.on('SIGINT', function() {
 
 db.on('error', (err) => console.log(err));
 
-module.exports = db;
+module.exports = db, mongoConnect;
