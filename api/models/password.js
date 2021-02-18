@@ -9,6 +9,7 @@ const passSchema = new Schema({
     },
     user_id: {
         type: ObjectID,
+        unique: true,
         required: [true, "User ID required"],
     },
     hashCode: {
