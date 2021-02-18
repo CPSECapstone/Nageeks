@@ -98,4 +98,5 @@ describe("CRUD testing password model", function() {
             assert.exists(err, "Does not accept duplicate user IDs");
         }
     });
+
 });
