@@ -5,6 +5,10 @@ const Schema = mongoose.Schema;
 const passSchema = new Schema({
     _id: {
         type: ObjectID,
+        required: [true, "ID required"],
+    },
+    user_id: {
+        type: ObjectID,
         required: [true, "User ID required"],
     },
     hashCode: {
@@ -12,12 +16,6 @@ const passSchema = new Schema({
         required: [true, "Hash Code required"],
         minLength: 60,
         maxLength: 60,
-    },
-    salt: {
-        type: String,
-        required: [true, "Salt required"],
-        minLength: 10,
-        maxLength: 10,
     },
 })
 

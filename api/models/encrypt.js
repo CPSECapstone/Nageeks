@@ -12,12 +12,13 @@ class Encrypt {
         }
     }
 
-    // generates a new Encrypt from a given hashcode and salt
+    // generates a new Encrypt from a given hashcode (which contains the salt)
     // useful for retrieving stuff from a database
-    static FromHashAndSalt(hashCode, salt) {
+    static FromHash(hashCode) {
         var encrypt = new Encrypt();
 
-        encrypt._salt = salt;
+        // salt is stored as the first 29 characters in the hash
+        encrypt._salt = hashCode.substring(0, 29);
         encrypt._hashCode = hashCode;
 
         return encrypt;
