@@ -3,6 +3,9 @@ const bcrypt = require('bcryptjs');
 class Encrypt {
     _hashCode;
     _salt;
+        
+    const maxInputLength = 72;
+    const saltLength = 29;
 
     constructor(password) {
         if (password !== undefined) {
@@ -15,10 +18,10 @@ class Encrypt {
     // generates a new Encrypt from a given hashcode (which contains the salt)
     // useful for retrieving stuff from a database
     static FromHash(hashCode) {
-        var encrypt = new Encrypt();
+        let encrypt = new Encrypt();
 
         // salt is stored as the first 29 characters in the hash
-        encrypt._salt = hashCode.substring(0, 29);
+        encrypt._salt = hashCode.substring(0, saltLength);
         encrypt._hashCode = hashCode;
 
         return encrypt;
@@ -28,9 +31,9 @@ class Encrypt {
 
         // bcrypt only accepts up to 72 bytes of input - probably nothing to worry about
         // could modify it to accept more pretty easily, or just use a reasonably sized maximum password length
-        var bytes = new TextEncoder().encode(password);
+        let bytes = new TextEncoder().encode(password);
 
-        if (bytes.length > 72) {
+        if (bytes.length > maxInputLength) {
             throw Error("password too long");
         }
 
@@ -39,11 +42,9 @@ class Encrypt {
 
     // checks if the input password is correct
     verifyPassword(password) {
-        var testHashCode = this.hashPassword(password);
+        let testHashCode = this.hashPassword(password);
 
-        if (testHashCode === this._hashCode) {
-            return true;
-        }
+        return testHashCode === this._hashCode;
     }
 
     getHash() { return this._hashCode; }
