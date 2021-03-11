@@ -83,10 +83,12 @@ https://travis-ci.org/github/CPSECapstone/Nageeks/pull_requests
 ### Back-End Dependencies
 * axios: https://www.npmjs.com/package/axios
 * concurrently: https://www.npmjs.com/package/concurrently
+* connect-mongo: https://www.npmjs.com/package/connect-mongo
 * cookie-parser: https://www.npmjs.com/package/cookie-parser
 * debug: https://www.npmjs.com/package/debug
 * dotenv: https://www.npmjs.com/package/dotenv
 * express: https://expressjs.com/
+* express-session: https://www.npmjs.com/package/express-session
 * http-errors: https://www.npmjs.com/package/http-errors
 * mongodb: https://docs.mongodb.com/
 * mongoose: https://mongoosejs.com/ 

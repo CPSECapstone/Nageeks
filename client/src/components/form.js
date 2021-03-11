@@ -44,18 +44,19 @@ export default function Form() {
       // Axios Method
       Axios({
           method: 'GET',
-          url: '/applications/UCDavis/forms/b',
+          url: '/applications/UCDavis/forms/userProfile',
       }).then(res => 
           res.data,
-      ).then(forms =>     
+      ).then(forms => {
+          console.log(forms);
           setForms(forms)
-      );
+      });
   }, [formNum]);
 
   function displayForms() {
     return (
-      Object.getOwnPropertyNames(forms).map((fieldName) => 
-        <TextField color="whitesmoke" className="textfield" label={fieldName} variant="filled"/>
+      forms.Components[0].Fields.map((field) => 
+        <TextField color="whitesmoke" className="textfield" label={field.Title} variant="filled"/>
       )
     );
   }
