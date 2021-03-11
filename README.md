@@ -82,6 +82,7 @@ https://travis-ci.org/github/CPSECapstone/Nageeks/pull_requests
 
 ### Back-End Dependencies
 * axios: https://www.npmjs.com/package/axios
+* aes: https://www.npmjs.com/package/aes-js
 * concurrently: https://www.npmjs.com/package/concurrently
 * connect-mongo: https://www.npmjs.com/package/connect-mongo
 * cookie-parser: https://www.npmjs.com/package/cookie-parser
