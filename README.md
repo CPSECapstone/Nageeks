@@ -46,8 +46,10 @@ example:
     MONGO_URI="mongoUri here"
     KEY: "some API key here"
 
-## Install dependences
+## Install dependencies
 node_modules should be created in Nageeks/, api/, and client/
+
+From Nageeks/:
 
     npm run install-dev  
 
@@ -80,12 +82,15 @@ https://travis-ci.org/github/CPSECapstone/Nageeks/pull_requests
 
 ### Back-End Dependencies
 * axios: https://www.npmjs.com/package/axios
+* aes: https://www.npmjs.com/package/aes-js
 * bcryptjs: https://www.npmjs.com/package/bcryptjs
 * concurrently: https://www.npmjs.com/package/concurrently
+* connect-mongo: https://www.npmjs.com/package/connect-mongo
 * cookie-parser: https://www.npmjs.com/package/cookie-parser
 * debug: https://www.npmjs.com/package/debug
 * dotenv: https://www.npmjs.com/package/dotenv
 * express: https://expressjs.com/
+* express-session: https://www.npmjs.com/package/express-session
 * http-errors: https://www.npmjs.com/package/http-errors
 * mongodb: https://docs.mongodb.com/
 * mongoose: https://mongoosejs.com/ 
