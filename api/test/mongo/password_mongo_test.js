@@ -63,8 +63,8 @@ describe("CRUD testing password model", function() {
     });
 
     it("Update password", async function() {
-        let newpass = new Encrypt("newpassword");
-        const expected = newpass.getHash();
+        let newPass = new Encrypt("newpassword");
+        const expected = newPass.getHash();
 
         const doc = await Password.findById(pword._id);
         doc.hashCode = expected;
@@ -80,13 +80,13 @@ describe("CRUD testing password model", function() {
     });
 
     it("Add password with duplicate user ID", async function() {
-        let newpass = new Encrypt("newpassword");
-        const newhash = newpass.getHash();
+        let newPass = new Encrypt("newpassword");
+        const newHash = newPass.getHash();
 
         const invalidPass = new Password({
             _id: ObjectID(),
             user_id: pword.user_id,
-            hashCode: newhash,
+            hashCode: newHash,
         });
 
         try {
