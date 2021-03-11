@@ -2,6 +2,8 @@ const { ObjectID } = require('mongodb');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const hashCodeLength = 60;
+
 const passSchema = new Schema({
     _id: {
         type: ObjectID,
@@ -15,8 +17,8 @@ const passSchema = new Schema({
     hashCode: {
         type: String,
         required: [true, "Hash Code required"],
-        minLength: 60,
-        maxLength: 60,
+        minLength: hashCodeLength,
+        maxLength: hashCodeLength,
     },
 })
 
