@@ -3,7 +3,35 @@ import {Card, CardHeader, Grid, Typography} from '@material-ui/core'
 import Axios from "axios";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+
+const CssTextField = withStyles({
+  root: {
+    '& .MuiInputBase-input': {
+      color: 'white',
+    },
+    '& .MuiFormLabel-root': {
+      color: 'white',
+    },
+    '& label.Mui-focused': {
+      color: 'white',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'white',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+       borderColor: 'white',
+     },
+      '&:hover fieldset': {
+        borderColor: 'white',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'white',
+    },
+    },
+  },
+})(TextField);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,9 +102,16 @@ export default function Form() {
             <Grid item xs={8}>
               <Typography className={classes.cardheader}> UIaaS Demo </Typography>
             </Grid>
-              <form className={classes.root}>
-                                {displayForms()}
-              </form>
+              <CssTextField
+                    label="0"
+                    variant="outlined"
+                    id="custom-css-outlined-input"
+                    />
+              <CssTextField
+                    label="length"
+                    variant="outlined"
+                    id="custom-css-outlined-input"
+                    />
               <Button 
                   onClick={() => { setFormNum( formNum + 1) }}
                   variant="contained" color="primary" href="">
