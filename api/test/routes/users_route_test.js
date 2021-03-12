@@ -10,7 +10,8 @@ async function createUsers(){
     const users = [
         {
             _id: ObjectID(),
-            schemaVersion: 1.0,
+            schemaVersion: 1.1,
+            roles: ["UCDavisClient"],
             firstName: "Deku",
             lastName: "Harms",
             dob: new Date('1990-08-15T06:15:30.000+00:00'),
@@ -26,7 +27,8 @@ async function createUsers(){
         },
         {
             _id: ObjectID(),
-            schemaVersion: 1.0,
+            schemaVersion: 1.1,
+            roles: ["UCDavisDoctor"],
             firstName: "Deku",
             lastName: "Harms",
             dob: new Date('1990-08-15T06:15:30.000+00:00'),

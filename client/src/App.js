@@ -1,10 +1,12 @@
 import React, {useState, setState} from 'react';
 import Applistings from './components/Applisting';
+import Doctor from './components/Doctor';
 import Customers from './components/customers';
 import EventCalendar from './components/eventCalendar';
 import Sidebar from './components/Sidebar';
 import Banner from './components/Banner';
 import Form from './components/form';
+import Login from './Login';
 import { Grid, Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Button } from '@material-ui/core'
@@ -78,9 +80,14 @@ function App() {
               </Grid>
     } else if (pageNum === 2) {
       page = <EventCalendar />
-    }else if (pageNum === 3){
-      page = <Form />
+    } else if (pageNum === 3){
+      page = <Form/>
+    } else if (pageNum === 4){
+      page = <Login/>
+    } else if(pageNum === 5){
+      page = <Doctor/>
     }
+
     return page;
   }
 
@@ -121,4 +128,3 @@ function App() {
 }
 
 export default App;
-
