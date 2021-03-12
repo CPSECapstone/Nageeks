@@ -55,8 +55,9 @@ export default function Form() {
 
   function displayForms() {
     return (
-      forms.Components[0].Fields.map((field) => 
-        <TextField color="whitesmoke" className="textfield" label={field.Title} variant="filled"/>
+      Object.getOwnPropertyNames(forms).map((fieldName) => 
+        <TextField aclassName="textfield" label={fieldName} variant="filled"/>
+
       )
     );
   }
@@ -68,18 +69,24 @@ export default function Form() {
       alignItems="center"
       direction="row"
     >
-      <Grid item xs={8} container justify="center">
-          <Card
-            className={classes.card}
-          >
-            <Grid item xs={8}>
+      <Grid 
+        item 
+        xs={8} 
+        container 
+        justify="center"
+      >
+          <Card className={classes.card}>
+            <Grid 
+              item 
+              xs={8}
+            >
               <Typography className={classes.cardheader}> UIaaS Demo </Typography>
             </Grid>
               <form className={classes.root}>
                                 {displayForms()}
               </form>
               <Button 
-                  onClick={() => { setFormNum( formNum + 1) }}
+                  onClick={() => { setFormNum(formNum + 1) }}
                   variant="contained" color="primary" href="">
                   Next Page
               </Button>
