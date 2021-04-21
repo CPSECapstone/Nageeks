@@ -26,53 +26,14 @@ router.route('/')
         // hangs if request body is empty or wrong format
         // let uid = ObjectId();
         const user = new User(req.body); // assign object id and all other crap from req body
-        const doc = await user.save();
-        res.set({'Location': uri + req.baseUrl.toString() + '/' + user._id.toString()}).sendStatus(201);
-    })
-    // update users if they are already found in the database, otherwise create them
-    .put(async function(req, res, next) {
-        // in put so should be calling create/save on a new or edited doc
-        // update is for patch
-
-        // find existing users
-        let promises = [];
-        // console.log(req.body);
-        req.body.forEach(user => {
-            promises.push(User.findById(user._id));
-        });
-
-        const docs = await Promise.all(promises);
-        let docMap = new Map();
-        // docs can be empty here if the db is empty - attempting to put before any users in db will cause error
-        docs.forEach(user =>{
-            docMap.set(user._id.toString(), user)
-        });
-
-        promises = [];
-        let status = 200;
-        req.body.forEach(user => {
-            // if the user exists, update it
-            if (docMap.has(user._id)){
-                let doc = docMap.get(user._id);
-                doc.schemaVersion = user.schemaVersion;
-                doc.firstName = user.firstName;
-                doc.lastName = user.lastName;
-                doc.dob = user.dob;
-                doc.phoneNumber = user.phoneNumber;
-                doc.address = user.address;
-
-                promises.push(doc.save());
-            }
-            // otherwise, create a new user
-            else{
-                promises.push(User.create(user))
-                status = 201;
-            }
-        });
-
-        await Promise.all(promises);
-        // chose not to return any json because its a bulk operation 
-        res.sendStatus(status);
+        try{
+            const doc = await user.save();
+            res.set({'Location': uri + req.baseUrl.toString() + '/' + user._id.toString()}).sendStatus(201);
+        }
+        catch (e){
+            console.error(e.message);
+            res.status(400).json({message: e.message});
+        }
     })
     .delete(async function(req, res, next){
         try{
