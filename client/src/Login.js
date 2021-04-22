@@ -115,7 +115,7 @@ function Login() {
             className={classes.SectionContent}>
             <p className={classes.mainContentStyle}>{buttonText}</p>
             <p className={classes.SubHeadings} style={{ marginBottom: '50px' }}>Welcome to CloudHaven</p>
-            <Grid container justify="center" alignItems="center">
+            <Grid container justify="center" alignItems="center" direction="column">
               {/* <TextField color="secondary" className="textfield" label='Username' variant="filled"/> */}
               <CssTextField
                 label="Username"
