@@ -47,6 +47,9 @@ router.route('/UCDavis/forms/:formId')
         else if(formId === "token") {
             return res.status(200).json(tokenEx);
         }
+        else {
+            return res.status(404).json({message: 'Form not available', formid: formId})
+        }
     })
 
 module.exports = router;
