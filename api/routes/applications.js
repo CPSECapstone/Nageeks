@@ -6,6 +6,26 @@ var axios = require('axios');
 const formA = {firstName: 'textfield', lastName: 'textfield', dob: 'textfield', phoneNumber: 'textfield'};
 const formB = {country: 'textfield', firstLine: 'textfield', secondLine: 'textfield', city: 'textfield', state: 'textfield', zipcode: 'textfield'};
 const formEmplA = {Client: 'textfield', city: 'textfield', state: 'textfield', zipcode: 'textfield'};
+const tokenEx = {
+    userId: 'tokenizedUserId',
+    VendorId: 'UUID',
+    VendorAuth: 'Password',
+    Components: [
+      {
+        Component: 'form',
+        Title: 'titlehere',
+        Description: 'Some Description',
+        Fields: [
+            {
+             Child: 'Text',
+             Content : 'text content here',
+             Label: 'text label'  // optional
+             }
+        ]
+      }
+    ]
+  }
+  
 //http
 //store collection of uris in DB or file that gets updates
 
@@ -24,8 +44,8 @@ router.route('/UCDavis/forms/:formId')
         else if(formId === "emplA") {
             return res.status(200).json(formEmplA);
         }
-        else {
-            return res.status(404).json({message: 'Form not available', formid: formId})
+        else if(formId === "token") {
+            return res.status(200).json(tokenEx);
         }
     })
 
