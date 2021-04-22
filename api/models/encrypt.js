@@ -1,11 +1,38 @@
 const bcrypt = require('bcryptjs');
 
+const maxInputLength = 72;
+const saltLength = 29;
+
+// Warning, if you perform a string operation on uneven length strings, you may end up with
+// unexpected trailing \u0000 characters
+// Ex:  let x = stringXor("a", "bcd");
+//      let y = stringXor(x, "bcd");
+//
+//      "a" !== y;
+//      y === "a\u0000\u0000";
+function stringXor(a, b) {
+    let e = "";
+    let i;
+
+    for(i = 0; i < a.length && i < b.length; i++) {
+        e += String.fromCodePoint(
+            a.charCodeAt(i) ^ b.charCodeAt(i)
+        );
+    }
+
+    if (a.length > b.length) {
+        e += a.substring(i);
+    }
+    else if (a.length < b.length) {
+        e += b.substring(i);
+    }
+
+    return e;
+}
+
 class Encrypt {
     _hashCode;
     _salt;
-        
-    const maxInputLength = 72;
-    const saltLength = 29;
 
     constructor(password) {
         if (password !== undefined) {
@@ -28,13 +55,15 @@ class Encrypt {
     }
 
     hashPassword(password) {
-
-        // bcrypt only accepts up to 72 bytes of input - probably nothing to worry about
-        // could modify it to accept more pretty easily, or just use a reasonably sized maximum password length
         let bytes = new TextEncoder().encode(password);
 
+        // bcryptjs only accepts inputs of less than 72 bytes in length, so we split it and XOR it
+        // Recursive call to allow for strings of theoretically any length
         if (bytes.length > maxInputLength) {
-            throw Error("password too long");
+            return stringXor(
+                bcrypt.hashSync(new TextDecoder().decode(bytes.subarray(0, maxInputLength)), this._salt),
+                this.hashPassword(new TextDecoder().decode(bytes.subarray(maxInputLength)))
+            );
         }
 
         return bcrypt.hashSync(password, this._salt);
